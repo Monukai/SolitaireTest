@@ -11,13 +11,13 @@ namespace SolitaireTest
         public const int CARDS_PER_SUIT = 13;
 
         protected const int SPADES_NUM = 0;
-        protected const char SPADES_CHAR = '♤';
+        protected const char SPADES_CHAR = 'S';//♤';
         protected const int HEARTS_NUM = 1;
         protected const char HEARTS_CHAR = '♥';
         protected const int DIAMONDS_NUM = 2;
         protected const char DIAMONDS_CHAR = '♦';
         protected const int CLUBS_NUM = 3;
-        protected const char CLUBS_CHAR = '♧';
+        protected const char CLUBS_CHAR = 'C';//♧';
 
         private static Suit? spadesInstance = null;
         public static Suit Spades
@@ -76,9 +76,9 @@ namespace SolitaireTest
         }
 
         protected char suitSymbol;
-        public char Symbol { get; }
+        public char Symbol { get { return suitSymbol; } }
         protected int suitNum;
-        public int SuitNumber { get; }
+        public int SuitNumber { get { return suitNum; } }
 
         public int GetSuitNum()
         {

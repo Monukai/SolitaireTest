@@ -13,6 +13,14 @@ namespace SolitaireTest
         public CurrentFlip(List<Card> cards)
         {
             this.cards = cards;
+
+#if DEV
+            foreach (Card card in cards)
+            {
+                Console.Write(card.ToString() + " ");
+            }
+            Console.Write(" | ");
+#endif
         }
 
         public bool HasTopCard()

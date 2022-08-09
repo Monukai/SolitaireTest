@@ -11,12 +11,13 @@ namespace SolitaireTest
     /// </summary>
     internal class Stacks
     {
-        private const int NUM_SUITS = 4;
+        private const int NUM_STACKS = 4;
         private const int CARDS_PER_STACK = 4;
+        public const int INITIAL_TOTAL_STACK_CARDS = NUM_STACKS * CARDS_PER_STACK;
 
-        public Stacks(Card[] cards)
+        public Stacks(List<Card> cards)
         {
-            System.Diagnostics.Debug.Assert(cards.Length == 16);
+            System.Diagnostics.Debug.Assert(cards.Count == 16);
 
             stacks = new List<List<Card>>();
 
@@ -25,18 +26,21 @@ namespace SolitaireTest
 
         private List<List<Card>> stacks;
 
-        private void InitializeStacks(Card[] cards)
+        private void InitializeStacks(List<Card> cards)
         {
-            for (int i = 0; i < NUM_SUITS; i++)
+            for (int i = 0; i < NUM_STACKS; i++)
             {
-                stacks[i] = new List<Card>();
+                stacks.Add(new List<Card>());
             }
 
+            // deal the cards into the stacks as you would physically
+            // (deal one card face down into each stack, repeat this two more times, and then once more with cards face up instead)
+            // the last card dealt is thus on the top, this is represented by being the First element of the list
             for (int i = 0; i < CARDS_PER_STACK; i++)
             {
-                for (int j = 0; j < NUM_SUITS; j++)
+                for (int j = 0; j < NUM_STACKS; j++)
                 {
-                    stacks[j].Insert(0, cards[(i * NUM_SUITS) + j]);
+                    stacks[j].Insert(0, cards[(i * NUM_STACKS) + j]);
                 }
             }
         }
@@ -47,7 +51,7 @@ namespace SolitaireTest
 
             foreach (List<Card> cards in stacks)
             {
-                if (cards.Count > 1)
+                if (cards.Count > 0)
                 {
                     topCards.Add(cards.First());
                 }
@@ -64,6 +68,23 @@ namespace SolitaireTest
             {
                 stack.Remove(stack.First());
             }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (List<Card> cards in stacks)
+            {
+                foreach (Card card in cards)
+                {
+                    stringBuilder.Append(card.ToString());
+                    stringBuilder.Append(" ");
+                }
+                stringBuilder.Append("\n");
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }

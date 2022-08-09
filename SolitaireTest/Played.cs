@@ -24,8 +24,25 @@ namespace SolitaireTest
         private List<List<Card>> cards;
         private List<Suit> suitsInPlay;
 
-        public bool IsPossiblePlay(Card card)
+        public bool IsPossiblePlay(List<Card> cards)
         {
+            foreach (Card card in cards)
+            {
+                if (IsPossiblePlay(card))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        public bool IsPossiblePlay(Card? card)
+        {
+            if (card == null)
+            {
+                return false;
+            }
+
             // If it's the first suit played, we can play any card from this suit at any time
             if (suitsInPlay.First().SuitNumber == card.Suit.SuitNumber)
             {
@@ -49,7 +66,18 @@ namespace SolitaireTest
             return cards[controllingSuitIndex].Any(x => x.GetCardFaceValue() == card.GetCardFaceValue());
         }
 
-        public void PlayCard(Card card)
+        public void PlayCard(Card card, Pile pile)
+        {
+            PlayCard(card);
+            pile.RemoveCard(card);
+        }
+        public void PlayCard(Card card, Stacks stacks)
+        {
+            PlayCard(card);
+            stacks.PlayCard(card);
+        }
+
+        private void PlayCard(Card card)
         {
             if (suitsInPlay.Contains(card.Suit))
             {
@@ -60,6 +88,10 @@ namespace SolitaireTest
                 suitsInPlay.Add(card.Suit);
                 cards.Add(new List<Card>() { card });
             }
+
+#if DEV
+            Console.WriteLine("Played " + card.ToString());
+#endif
         }
 
         public bool HasWon()
