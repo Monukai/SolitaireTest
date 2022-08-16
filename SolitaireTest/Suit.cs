@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace SolitaireTest
 {
@@ -11,13 +12,13 @@ namespace SolitaireTest
         public const int CARDS_PER_SUIT = 13;
 
         protected const int SPADES_NUM = 0;
-        protected const char SPADES_CHAR = 'S';//♤';
+        protected const char SPADES_CHAR = '♤';
         protected const int HEARTS_NUM = 1;
         protected const char HEARTS_CHAR = '♥';
         protected const int DIAMONDS_NUM = 2;
         protected const char DIAMONDS_CHAR = '♦';
         protected const int CLUBS_NUM = 3;
-        protected const char CLUBS_CHAR = 'C';//♧';
+        protected const char CLUBS_CHAR = '♧';
 
         private static Suit? spadesInstance = null;
         public static Suit Spades
@@ -68,6 +69,8 @@ namespace SolitaireTest
             }
         }
 
+        public static List<Suit> Suits = new List<Suit>() { Spades, Hearts, Diamonds, Clubs };
+
         private Suit() { }
         protected Suit(char suitSymbol, int suitNum)
         {
@@ -91,22 +94,7 @@ namespace SolitaireTest
 
         public static char GetSymbol(int suitNumber)
         {
-            if (suitNumber == Spades.SuitNumber)
-            {
-                return Spades.suitSymbol;
-            }
-            else if (suitNumber == Hearts.SuitNumber)
-            {
-                return Hearts.suitSymbol;
-            }
-            else if (suitNumber == Diamonds.SuitNumber)
-            {
-                return Diamonds.suitSymbol;
-            }
-            else
-            {
-                return Clubs.suitSymbol;
-            }
+            return Suits.First(x => x.SuitNumber == suitNumber).suitSymbol;
         }
 
         /// <summary>
@@ -117,23 +105,7 @@ namespace SolitaireTest
         public static Suit GetSuit(int cardNum)
         {
             int suitNum = cardNum / CARDS_PER_SUIT;
-
-            if (suitNum == SPADES_NUM)
-            {
-                return Suit.Spades;
-            }
-            else if (suitNum == HEARTS_NUM)
-            {
-                return Suit.Hearts;
-            }
-            else if (suitNum == DIAMONDS_NUM)
-            {
-                return Suit.Diamonds;
-            }
-            else
-            {
-                return Suit.Clubs;
-            }
+            return Suits.First(x => x.SuitNumber == suitNum);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SolitaireTest
 {
     internal class GameManager
     {
-        public GameManager(int numGames)
+        public GameManager(int numGames, GameLogManager gameLogger)
         {
             this.numGames = numGames;
             cards = new List<Card>();
@@ -19,6 +19,7 @@ namespace SolitaireTest
             }
 
             random = new Random();
+            _gameLogger = gameLogger;
             Redeal();
         }
 
@@ -27,13 +28,14 @@ namespace SolitaireTest
         private Solitaire lpp;
         private List<Card> cards;
         private Random random;
+        private GameLogManager _gameLogger;
 
         private void Redeal()
         {
             List<Card> shuffledCards = cards.OrderBy(x => random.Next()).ToList();
 
-            fpp = new FirstPossiblePlay(shuffledCards);
-            lpp = new LastPossiblePlay(shuffledCards);
+            fpp = new FirstPossiblePlay(shuffledCards, _gameLogger);
+            lpp = new LastPossiblePlay(shuffledCards, _gameLogger);
         }
 
         public string PlayGames()
@@ -41,33 +43,55 @@ namespace SolitaireTest
             int fppWins = 0;
             int lppWins = 0;
 
+            bool fppWin = false;
+            bool lppWin = false;
+
             for (int i = 0; i < numGames; i++)
             {
+                if (_gameLogger.IsActive())
+                {
+                    _gameLogger.Append("\n\nFirst Play Possible\n\n");
+                }
 
-#if DEV
-                Console.WriteLine("\nFirst Play Possible\n");
-#endif
-                if (fpp.Play() == true)
+                fppWin = fpp.Play();
+
+                if (fppWin == true)
                 {
                     fppWins++;
                 }
 
-#if DEV
-                Console.WriteLine("\nLast Play Possible\n");
-#endif
-                if (lpp.Play() == true)
+                if (_gameLogger.IsActive())
+                {
+                    _gameLogger.Append("\n\nLast Play Possible\n\n");
+                }
+
+                lppWin = lpp.Play(); 
+
+                if (lppWin == true)
                 {
                     lppWins++;
+                }
+
+                if (_gameLogger.IsActive())
+                {
+                    _gameLogger.Print(lppWin != fppWin);
                 }
 
                 Redeal();
             }
 
-            return "Played " + numGames + ": \n\nFirst Possible Play: " + fppWins + " wins out of " + numGames + " games (" + ((double)fppWins / (double)numGames * 100.0) + ")\nLast Possible Play: " + lppWins + " wins out of " + numGames + " games (" + ((double)lppWins / (double)numGames * 100.0) + ")";
+            String output = ComputeOutputText(lppWins, fppWins, numGames);
+            return output;            
         }
-         
 
-        //private static Random rng = new Random();
-        //var shuffledcards = cards.OrderBy(a => rng.Next()).ToList();
+        private string ComputeOutputText(int lppWins, int fppWins, int numGames)
+        {
+            double lppWinPercent = ((double)lppWins / (double)numGames * 100.0);
+            double fppWinPercent = ((double)fppWins / (double)numGames * 100.0);
+            string lppWinPercentText = String.Format("({0:F2}% games won)", lppWinPercent);
+            string fppWinPercentText = String.Format("({0:F2}% games won)", fppWinPercent);
+
+            return "Played " + numGames + ": \n\nFirst Possible Play: " + fppWins + " wins out of " + numGames + " games " + fppWinPercentText + "\nLast Possible Play: " + lppWins + " wins out of " + numGames + " games " + lppWinPercentText;
+        }
     }
 }

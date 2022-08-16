@@ -1,0 +1,78 @@
+Sample game
+
+4♦ Q♥ 7♦ 9♥
+4C 6S K♦ 8S
+8♦ 7S 6♦ 2♦
+9S 2♥ 5♥ J♦
+
+First in play: 3♥
+KS QC 10C  | KS QC 10C QS 3S 7C 10♥ 10♦ JS 10S 2C A♦ 6♥ 5C AC 8C 9C 3♦ KC 6C A♥ 4♥ 4S JC 9♦ 5♦ 3C 2S 8♥ Q♦ J♥ K♥ 5S 7♥ AS
+4♦ Q♥ 7♦ 9♥
+4C 6S K♦ 8S
+8♦ 7S 6♦ 2♦
+9S 2♥ 5♥ J♦
+
+First in play: 3♥
+KS QC 10C  | KS QC 10C QS 3S 7C 10♥ 10♦ JS 10S 2C A♦ 6♥ 5C AC 8C 9C 3♦ KC 6C A♥ 4♥ 4S JC 9♦ 5♦ 3C 2S 8♥ Q♦ J♥ K♥ 5S 7♥ AS
+
+First Play Possible
+
+QS 3S 7C  | 10♥ 10♦ JS  | Played 10♥
+7C 10♦ JS  | 10S 2C A♦  | 6♥ 5C AC  | Played 6♥
+A♦ 5C AC  | 8C 9C 3♦  | KC 6C A♥  | 4♥ 4S JC  | Played 4♥
+A♥ 4S JC  | Played A♥
+6C 4S JC  | 9♦ 5♦ 3C  | 2S 8♥ Q♦  | J♥ K♥ 5S  | Played J♥ Played K♥
+Q♦ 5S 7♥  | AS  |
+KS QC 10C  | QS 3S 7C  | 10♦ JS 10S  | 2C A♦ 5C  | AC 8C 9C  | 3♦ KC 6C  | Played 3♦
+Played 4♦
+Played Q♥
+9C KC 6C  | 4S JC 9♦  | 5♦ 3C 2S  | 8♥ Q♦ 5S  | Played 8♥
+Played 8♦
+Played Q♦
+2S 5S 7♥  | AS  |
+KS QC 10C  | QS 3S 7C  | 10♦ JS 10S  | Played 10♦
+7C JS 10S  | 2C A♦ 5C  | AC 8C 9C  | KC 6C 4S  | JC 9♦ 5♦  | 3C 2S 5S  | Played 3C
+Played 4C
+5♦ 2S 5S  | 7♥ AS  |
+KS QC 10C  | QS 3S 7C  | JS 10S 2C  | A♦ 5C AC  | Played A♦
+2C 5C AC  | 8C 9C KC  | Played 8C
+AC 9C KC  | Played AC
+5C 9C KC  | 6C 4S JC  | 9♦ 5♦ 2S  | 5S 7♥ AS  |
+KS QC 10C  | QS 3S 7C  | JS 10S 2C  | 5C 9C KC  | 6C 4S JC  | 9♦ 5♦ 2S  | 5S 7♥ AS  |
+KS QC 10C  |
+Last Play Possible
+
+QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 6♥ 5C AC  | 8C 9C 3♦  | KC 6C A♥  | 4♥ 4S JC  | 9♦ 5♦ 3C  | 2S 8♥ Q♦  | J♥ K♥ 5S  | 7♥ AS  | Played J♥
+
+KS QC 10C  | QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 6♥ 5C AC  | 8C 9C 3♦  | KC 6C A♥  | 4♥ 4S JC  | 9♦ 5♦ 3C  | 2S 8♥ Q♦  | K♥ 5S 7♥  | AS  | Played K♥
+
+KS QC 10C  | QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 6♥ 5C AC  | 8C 9C 3♦  | KC 6C A♥  | 4♥ 4S JC  | 9♦ 5♦ 3C  | 2S 8♥ Q♦  | 5S 7♥ AS  | Played 4♥
+
+KS QC 10C  | QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 6♥ 5C AC  | 8C 9C 3♦  | KC 6C A♥  | 4S JC 9♦  | 5♦ 3C 2S  | 8♥ Q♦ 5S  | 7♥ AS  | Played 8♥
+
+KS QC 10C  | QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 6♥ 5C AC  | 8C 9C 3♦  | KC 6C A♥  | 4S JC 9♦  | 5♦ 3C 2S  | Q♦ 5S 7♥  | AS  | Played 6♥
+
+KS QC 10C  | QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 5C AC 8C  | 9C 3♦ KC  | 6C A♥ 4S  | JC 9♦ 5♦  | 3C 2S Q♦  | 5S 7♥ AS  | Played 3C
+
+KS QC 10C  | Played 4C
+QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 5C AC 8C  | 9C 3♦ KC  | 6C A♥ 4S  | JC 9♦ 5♦  | 2S Q♦ 5S  | 7♥ AS  | Played JC
+
+KS QC 10C  | QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 5C AC 8C  | 9C 3♦ KC  | 6C A♥ 4S  | 9♦ 5♦ 2S  | Q♦ 5S 7♥  | AS  | Played 6C
+
+KS QC 10C  | QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 5C AC 8C  | 9C 3♦ KC  | A♥ 4S 9♦  | 5♦ 2S Q♦  | 5S 7♥ AS  | Played ♥
+KS QC 10C  | QS 3S 7C  | 10♥ 10♦ JS  | 10S 2C A♦  | 5C AC 8C  | 9C 3♦ KC  | 4S 9♦ 5♦  | 2S Q♦ 5S  | 7♥ AS  | Played 10♥
+
+KS QC 10C  | QS 3S 7C  | 10♦ JS 10S  | 2C A♦ 5C  | AC 8C 9C  | 3♦ KC 4S  | 9♦ 5♦ 2S  | Q♦ 5S 7♥  | AS  | Played 3♦
+
+KS QC 10C  | Played 4♦
+Played Q♥
+QS 3S 7C  | 10♦ JS 10S  | 2C A♦ 5C  | AC 8C 9C  | KC 4S 9♦  | 5♦ 2S Q♦  | 5S 7♥ AS  | Played KC
+
+KS QC 10C  | QS 3S 7C  | 10♦ JS 10S  | 2C A♦ 5C  | AC 8C 9C  | 4S 9♦ 5♦  | 2S Q♦ 5S  | 7♥ AS  | Played AC
+
+KS QC 10C  | QS 3S 7C  | 10♦ JS 10S  | 2C A♦ 5C  | 8C 9C 4S  | 9♦ 5♦ 2S  | Q♦ 5S 7♥  | AS  | Played 8C
+
+KS QC 10C  | Played 8♦
+QS 3S 7C  | 10♦ JS 10S  | 2C A♦ 5C  | 9C 4S 9♦  | 5♦ 2S Q♦  | 5S 7♥ AS  |
+KS QC 10C  | QS 3S 7C  | 10♦ JS 10S  | 2C A♦ 5C  | 9C 4S 9♦  | 5♦ 2S Q♦  | 5S 7♥ AS  |
+KS QC 10C  |

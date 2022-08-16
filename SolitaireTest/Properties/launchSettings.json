@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SolitaireTest": {
+      "commandName": "Project",
+      "commandLineArgs": "-p5 -pdiff"
+    }
+  }
+}

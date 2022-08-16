@@ -14,13 +14,15 @@ namespace SolitaireTest
         /// Played represents the cards you put into play, you start the game with one card (firstCard) in play
         /// </summary>
         /// <param name="firstCard">The first card put into play when the game is dealt</param>
-        public Played(Card firstCard)
+        public Played(Card firstCard, GameLogManager gameLogger)
         {
             cards = new List<List<Card>>();
             cards.Add(new List<Card>() { firstCard });
             suitsInPlay = new List<Suit>() { firstCard.Suit };
+            _gameLogger = gameLogger;
         }
 
+        private GameLogManager _gameLogger;
         private List<List<Card>> cards;
         private List<Suit> suitsInPlay;
 
@@ -89,9 +91,10 @@ namespace SolitaireTest
                 cards.Add(new List<Card>() { card });
             }
 
-#if DEV
-            Console.WriteLine("Played " + card.ToString());
-#endif
+            if (_gameLogger.IsActive())
+            {
+                _gameLogger.Append("{PLAY " + card.ToString() + "} ");
+            }
         }
 
         public bool HasWon()

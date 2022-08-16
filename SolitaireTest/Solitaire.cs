@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 
 namespace SolitaireTest
 {
@@ -16,10 +17,11 @@ namespace SolitaireTest
         private const int NUM_IN_PILE = Card.NUM_CARDS - PILE_OFFSET;
 
 
-        public Solitaire(List<Card> shuffledDeck)
+        public Solitaire(List<Card> shuffledDeck, GameLogManager gameLogger)
         {
             this.shuffledDeck = shuffledDeck;
             roundsSinceLastPlay = 0;
+            _gameLogger = gameLogger;
             Deal();
         }
 
@@ -28,20 +30,30 @@ namespace SolitaireTest
         protected Stacks stacks;
         protected Played played;
         protected int roundsSinceLastPlay;
+        protected GameLogManager _gameLogger;
 
         [MemberNotNull(nameof(pile), nameof(stacks), nameof(played))]
         public void Deal()
         {
             stacks = new Stacks(shuffledDeck.GetRange(STACK_OFFSET, Stacks.INITIAL_TOTAL_STACK_CARDS));
+            if (_gameLogger.IsActive())
+            {
+                //if (Type.Equals(this, typeof(FirstPossiblePlay)))
+                //{
+                    _gameLogger.Append(stacks.ToString() + "\n");
+                //}
+            }
 
-#if DEV
-            Console.WriteLine(stacks.ToString());
-#endif
-            played = new Played(shuffledDeck[PLAYED_OFFSET]);
-#if DEV
-            Console.WriteLine("First in play: " + shuffledDeck[PLAYED_OFFSET].ToString());
-#endif
-            pile = new Pile(shuffledDeck.GetRange(PILE_OFFSET, NUM_IN_PILE));
+            played = new Played(shuffledDeck[PLAYED_OFFSET], _gameLogger);
+            if (_gameLogger.IsActive())
+            {
+                //if (Type.Equals(this, typeof(FirstPossiblePlay)))
+                //{
+                    _gameLogger.Append("Start Play: " + shuffledDeck[PLAYED_OFFSET].ToString() + "\n");
+                //}
+            }
+
+            pile = new Pile(shuffledDeck.GetRange(PILE_OFFSET, NUM_IN_PILE), _gameLogger);
 #if DEV
             Console.WriteLine(pile.ToString());
 #endif

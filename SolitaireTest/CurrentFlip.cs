@@ -10,17 +10,18 @@ namespace SolitaireTest
     {
         private List<Card> cards;
 
-        public CurrentFlip(List<Card> cards)
+        public CurrentFlip(List<Card> cards, GameLogManager gameLogger)
         {
             this.cards = cards;
 
-#if DEV
-            foreach (Card card in cards)
+            if (gameLogger.IsActive())
             {
-                Console.Write(card.ToString() + " ");
+                foreach (Card card in cards)
+                {
+                    gameLogger.Append(card.ToString() + " ");
+                }
+                gameLogger.Append(" | ");
             }
-            Console.Write(" | ");
-#endif
         }
 
         public bool HasTopCard()

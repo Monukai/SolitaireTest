@@ -12,7 +12,7 @@ namespace SolitaireTest
     /// </summary>
     internal class LastPossiblePlay : Solitaire
     {
-        public LastPossiblePlay(List<Card> shuffledDeck) : base(shuffledDeck) { }
+        public LastPossiblePlay(List<Card> shuffledDeck, GameLogManager gameLogger) : base(shuffledDeck, gameLogger) { }
 
         private Card? lastPossiblePlay;
 

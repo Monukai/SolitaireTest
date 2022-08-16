@@ -11,7 +11,7 @@ namespace SolitaireTest
     /// </summary>
     internal class FirstPossiblePlay : Solitaire
     {
-        public FirstPossiblePlay(List<Card> shuffledDeck) : base(shuffledDeck) { }
+        public FirstPossiblePlay(List<Card> shuffledDeck, GameLogManager gameLogger) : base(shuffledDeck, gameLogger) { }
 
         protected override void PlayRound()
         {

@@ -15,10 +15,11 @@ namespace SolitaireTest
         private const string CARD_TEXT_DELIMITER = " ";
         private const int MAX_FLIP_SIZE = 3;
 
-        public Pile(List<Card> cards)
+        public Pile(List<Card> cards, GameLogManager gameLogger)
         {
             this.cards = cards;
             currentIndex = 0;
+            _gameLogger = gameLogger;
             Flip();
             //currentFlip = new CurrentFlip(cards.GetRange(0, MAX_FLIP_SIZE));
         }
@@ -26,6 +27,7 @@ namespace SolitaireTest
         private List<Card> cards;
         private int currentIndex;
         private CurrentFlip currentFlip;
+        private GameLogManager _gameLogger;
 
         public bool HasFlip()
         {
@@ -34,9 +36,11 @@ namespace SolitaireTest
 
         public void ResetPile()
         {
-#if DEV
-            Console.WriteLine();
-#endif
+            if (_gameLogger.IsActive())
+            {
+                _gameLogger.Append("\n");
+            }
+
             currentIndex = 0;
             Flip();
         }
@@ -56,7 +60,14 @@ namespace SolitaireTest
         {
             int cardsToFlip = Math.Min(cards.Count - currentIndex, MAX_FLIP_SIZE);
 
-            currentFlip = new CurrentFlip(cards.GetRange(currentIndex, cardsToFlip));
+            List<Card> flipInRealOrder = new List<Card>();
+
+            foreach (Card card in cards.GetRange(currentIndex, cardsToFlip))
+            {
+                flipInRealOrder.Add(card);
+            }
+
+            currentFlip = new CurrentFlip(flipInRealOrder, _gameLogger);
             currentIndex += MAX_FLIP_SIZE;
         }
 
